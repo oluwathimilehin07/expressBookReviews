@@ -1,0 +1,53 @@
+TASK: getallbooks
+curl.exe -sS --fail-with-body http://127.0.0.1:5000/
+
+{"1":{"author":"Chinua Achebe","title":"Things Fall Apart","reviews":{}},"2":{"author":"Hans Christian Andersen","title":"Fairy tales","reviews":{}},"3":{"author":"Dante Alighieri","title":"The Divine Comedy","reviews":{}},"4":{"author":"Unknown","title":"The Epic Of Gilgamesh","reviews":{}},"5":{"author":"Unknown","title":"The Book Of Job","reviews":{}},"6":{"author":"Unknown","title":"One Thousand and One Nights","reviews":{}},"7":{"author":"Unknown","title":"Njál's Saga","reviews":{}},"8":{"author":"Jane Austen","title":"Pride and Prejudice","reviews":{}},"9":{"author":"Honoré de Balzac","title":"Le Père Goriot","reviews":{}},"10":{"author":"Samuel Beckett","title":"Molloy, Malone Dies, The Unnamable, the trilogy","reviews":{}}}
+
+--------------------
+TASK: getbooksbyISBN
+curl.exe -sS --fail-with-body http://127.0.0.1:5000/isbn/1
+
+{"author":"Chinua Achebe","title":"Things Fall Apart","reviews":{}}
+
+--------------------
+TASK: getbooksbyauthor
+curl.exe -sS --fail-with-body http://127.0.0.1:5000/author/Chinua%20Achebe
+
+{"1":{"author":"Chinua Achebe","title":"Things Fall Apart","reviews":{}}}
+
+--------------------
+TASK: getbooksbytitle
+curl.exe -sS --fail-with-body http://127.0.0.1:5000/title/Things%20Fall%20Apart
+
+{"1":{"author":"Chinua Achebe","title":"Things Fall Apart","reviews":{}}}
+
+--------------------
+TASK: getbookreview
+curl.exe -sS --fail-with-body http://127.0.0.1:5000/review/1
+
+{}
+
+--------------------
+TASK: register
+curl.exe -sS --fail-with-body -H 'Content-Type: application/json' -X POST --data-binary @credentials.json http://127.0.0.1:5000/register
+
+{"message":"User registered successfully."}
+
+--------------------
+TASK: login
+curl.exe -sS --fail-with-body -H 'Content-Type: application/json' -X POST -c demo-cookies.txt --data-binary @credentials.json http://127.0.0.1:5000/customer/login
+
+{"message":"Login successful."}
+
+--------------------
+TASK: reviewadded
+curl.exe -sS --fail-with-body -H 'Content-Type: application/json' -X PUT -b demo-cookies.txt --data-binary @review.json http://127.0.0.1:5000/customer/auth/review/1
+
+{"message":"Review added successfully.","reviews":{"bookreader":"I liked how the story shows the pressure on Okonkwo and his community. The ending was sad, but it made the book stay with me."}}
+
+--------------------
+TASK: deletereview
+curl.exe -sS --fail-with-body -X DELETE -b demo-cookies.txt http://127.0.0.1:5000/customer/auth/review/1
+
+{"message":"Review deleted successfully.","reviews":{}}
+
