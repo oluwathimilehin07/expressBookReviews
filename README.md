@@ -39,6 +39,6 @@ This is an in-memory course project: accounts, sessions and review changes disap
 
 ## Submission
 
-`submission` contains the cURL evidence for Tasks 1-10 and the general.js URL for Task 11. The test credentials are demonstration data only.
+`submission` contains the cURL evidence for Tasks 1–9, the general.js URL for Task 10, and GitHub fork evidence for Task 11. The test credentials are demonstration data only.
 
 The assignment names `expressBookReview`, but the available IBM repository is `ibm-developer-skills-network/expressBookReviews`. The completed project is published in https://github.com/oluwathimilehin07/expressBookReviews. The GitHub API confirms the IBM repository as its parent.

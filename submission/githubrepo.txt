@@ -1,4 +1,4 @@
-curl.exe -sS --fail-with-body https://api.github.com/repos/oluwathimilehin07/expressBookReviews
+curl -fsS https://api.github.com/repos/oluwathimilehin07/expressBookReviews
 
 {
   "id": 1424673853,
@@ -68,17 +68,17 @@ curl.exe -sS --fail-with-body https://api.github.com/repos/oluwathimilehin07/exp
   "releases_url": "https://api.github.com/repos/oluwathimilehin07/expressBookReviews/releases{/id}",
   "deployments_url": "https://api.github.com/repos/oluwathimilehin07/expressBookReviews/deployments",
   "created_at": "2026-10-18T18:11:58Z",
-  "updated_at": "2026-10-18T18:11:58Z",
-  "pushed_at": "2024-08-16T07:35:29Z",
+  "updated_at": "2026-10-18T18:13:58Z",
+  "pushed_at": "2026-10-18T18:13:37Z",
   "git_url": "git://github.com/oluwathimilehin07/expressBookReviews.git",
   "ssh_url": "git@github.com:oluwathimilehin07/expressBookReviews.git",
   "clone_url": "https://github.com/oluwathimilehin07/expressBookReviews.git",
   "svn_url": "https://github.com/oluwathimilehin07/expressBookReviews",
   "homepage": null,
-  "size": 1136,
+  "size": 60,
   "stargazers_count": 0,
   "watchers_count": 0,
-  "language": null,
+  "language": "JavaScript",
   "has_issues": false,
   "has_projects": true,
   "has_downloads": false,
@@ -196,11 +196,11 @@ curl.exe -sS --fail-with-body https://api.github.com/repos/oluwathimilehin07/exp
     "has_wiki": true,
     "has_pages": false,
     "has_discussions": false,
-    "forks_count": 13645,
+    "forks_count": 13721,
     "mirror_url": null,
     "archived": false,
     "disabled": false,
-    "open_issues_count": 283,
+    "open_issues_count": 282,
     "license": {
       "key": "apache-2.0",
       "name": "Apache License 2.0",
@@ -217,8 +217,8 @@ curl.exe -sS --fail-with-body https://api.github.com/repos/oluwathimilehin07/exp
 
     ],
     "visibility": "public",
-    "forks": 13645,
-    "open_issues": 283,
+    "forks": 13721,
+    "open_issues": 282,
     "watchers": 30,
     "default_branch": "main"
   },
@@ -307,11 +307,11 @@ curl.exe -sS --fail-with-body https://api.github.com/repos/oluwathimilehin07/exp
     "has_wiki": true,
     "has_pages": false,
     "has_discussions": false,
-    "forks_count": 13645,
+    "forks_count": 13721,
     "mirror_url": null,
     "archived": false,
     "disabled": false,
-    "open_issues_count": 283,
+    "open_issues_count": 282,
     "license": {
       "key": "apache-2.0",
       "name": "Apache License 2.0",
@@ -328,11 +328,12 @@ curl.exe -sS --fail-with-body https://api.github.com/repos/oluwathimilehin07/exp
 
     ],
     "visibility": "public",
-    "forks": 13645,
-    "open_issues": 283,
+    "forks": 13721,
+    "open_issues": 282,
     "watchers": 30,
     "default_branch": "main"
   },
-  "network_count": 13645,
+  "network_count": 13721,
   "subscribers_count": 0
 }
+

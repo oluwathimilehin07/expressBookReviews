@@ -1,5 +1,73 @@
-TASK 1: githubrepo
-curl.exe -sS --fail-with-body https://api.github.com/repos/oluwathimilehin07/expressBookReviews
+Task 1: getallbooks
+
+curl.exe -sS --fail-with-body http://127.0.0.1:5000/
+
+{"1":{"author":"Chinua Achebe","title":"Things Fall Apart","reviews":{}},"2":{"author":"Hans Christian Andersen","title":"Fairy tales","reviews":{}},"3":{"author":"Dante Alighieri","title":"The Divine Comedy","reviews":{}},"4":{"author":"Unknown","title":"The Epic Of Gilgamesh","reviews":{}},"5":{"author":"Unknown","title":"The Book Of Job","reviews":{}},"6":{"author":"Unknown","title":"One Thousand and One Nights","reviews":{}},"7":{"author":"Unknown","title":"Njál's Saga","reviews":{}},"8":{"author":"Jane Austen","title":"Pride and Prejudice","reviews":{}},"9":{"author":"Honoré de Balzac","title":"Le Père Goriot","reviews":{}},"10":{"author":"Samuel Beckett","title":"Molloy, Malone Dies, The Unnamable, the trilogy","reviews":{}}}
+
+
+Task 2: getbooksbyISBN
+
+curl.exe -sS --fail-with-body http://127.0.0.1:5000/isbn/1
+
+{"author":"Chinua Achebe","title":"Things Fall Apart","reviews":{}}
+
+
+Task 3: getbooksbyauthor
+
+curl.exe -sS --fail-with-body http://127.0.0.1:5000/author/Chinua%20Achebe
+
+{"1":{"author":"Chinua Achebe","title":"Things Fall Apart","reviews":{}}}
+
+
+Task 4: getbooksbytitle
+
+curl.exe -sS --fail-with-body http://127.0.0.1:5000/title/Things%20Fall%20Apart
+
+{"1":{"author":"Chinua Achebe","title":"Things Fall Apart","reviews":{}}}
+
+
+Task 5: getbookreview
+
+curl.exe -sS --fail-with-body http://127.0.0.1:5000/review/1
+
+{}
+
+
+Task 6: register
+
+curl.exe -sS --fail-with-body -H 'Content-Type: application/json' -X POST --data-binary @credentials.json http://127.0.0.1:5000/register
+
+{"message":"User registered successfully."}
+
+
+Task 7: login
+
+curl.exe -sS --fail-with-body -H 'Content-Type: application/json' -X POST -c demo-cookies.txt --data-binary @credentials.json http://127.0.0.1:5000/customer/login
+
+{"message":"Login successful."}
+
+
+Task 8: reviewadded
+
+curl.exe -sS --fail-with-body -H 'Content-Type: application/json' -X PUT -b demo-cookies.txt --data-binary @review.json http://127.0.0.1:5000/customer/auth/review/1
+
+{"message":"Review added successfully.","reviews":{"bookreader":"I liked how the story shows the pressure on Okonkwo and his community. The ending was sad, but it made the book stay with me."}}
+
+
+Task 9: deletereview
+
+curl.exe -sS --fail-with-body -X DELETE -b demo-cookies.txt http://127.0.0.1:5000/customer/auth/review/1
+
+{"message":"Review deleted successfully.","reviews":{}}
+
+
+Task 10: general.js URL
+
+https://github.com/oluwathimilehin07/expressBookReviews/blob/main/final_project/router/general.js
+
+Task 11: fork evidence
+
+curl -fsS https://api.github.com/repos/oluwathimilehin07/expressBookReviews
 
 {
   "id": 1424673853,
@@ -69,17 +137,17 @@ curl.exe -sS --fail-with-body https://api.github.com/repos/oluwathimilehin07/exp
   "releases_url": "https://api.github.com/repos/oluwathimilehin07/expressBookReviews/releases{/id}",
   "deployments_url": "https://api.github.com/repos/oluwathimilehin07/expressBookReviews/deployments",
   "created_at": "2026-10-18T18:11:58Z",
-  "updated_at": "2026-10-18T18:11:58Z",
-  "pushed_at": "2024-08-16T07:35:29Z",
+  "updated_at": "2026-10-18T18:13:58Z",
+  "pushed_at": "2026-10-18T18:13:37Z",
   "git_url": "git://github.com/oluwathimilehin07/expressBookReviews.git",
   "ssh_url": "git@github.com:oluwathimilehin07/expressBookReviews.git",
   "clone_url": "https://github.com/oluwathimilehin07/expressBookReviews.git",
   "svn_url": "https://github.com/oluwathimilehin07/expressBookReviews",
   "homepage": null,
-  "size": 1136,
+  "size": 60,
   "stargazers_count": 0,
   "watchers_count": 0,
-  "language": null,
+  "language": "JavaScript",
   "has_issues": false,
   "has_projects": true,
   "has_downloads": false,
@@ -197,11 +265,11 @@ curl.exe -sS --fail-with-body https://api.github.com/repos/oluwathimilehin07/exp
     "has_wiki": true,
     "has_pages": false,
     "has_discussions": false,
-    "forks_count": 13645,
+    "forks_count": 13721,
     "mirror_url": null,
     "archived": false,
     "disabled": false,
-    "open_issues_count": 283,
+    "open_issues_count": 282,
     "license": {
       "key": "apache-2.0",
       "name": "Apache License 2.0",
@@ -218,8 +286,8 @@ curl.exe -sS --fail-with-body https://api.github.com/repos/oluwathimilehin07/exp
 
     ],
     "visibility": "public",
-    "forks": 13645,
-    "open_issues": 283,
+    "forks": 13721,
+    "open_issues": 282,
     "watchers": 30,
     "default_branch": "main"
   },
@@ -308,11 +376,11 @@ curl.exe -sS --fail-with-body https://api.github.com/repos/oluwathimilehin07/exp
     "has_wiki": true,
     "has_pages": false,
     "has_discussions": false,
-    "forks_count": 13645,
+    "forks_count": 13721,
     "mirror_url": null,
     "archived": false,
     "disabled": false,
-    "open_issues_count": 283,
+    "open_issues_count": 282,
     "license": {
       "key": "apache-2.0",
       "name": "Apache License 2.0",
@@ -329,70 +397,12 @@ curl.exe -sS --fail-with-body https://api.github.com/repos/oluwathimilehin07/exp
 
     ],
     "visibility": "public",
-    "forks": 13645,
-    "open_issues": 283,
+    "forks": 13721,
+    "open_issues": 282,
     "watchers": 30,
     "default_branch": "main"
   },
-  "network_count": 13645,
+  "network_count": 13721,
   "subscribers_count": 0
 }
-
---------------------
-TASK 2: getallbooks
-curl.exe -sS --fail-with-body http://127.0.0.1:5000/
-
-{"1":{"author":"Chinua Achebe","title":"Things Fall Apart","reviews":{}},"2":{"author":"Hans Christian Andersen","title":"Fairy tales","reviews":{}},"3":{"author":"Dante Alighieri","title":"The Divine Comedy","reviews":{}},"4":{"author":"Unknown","title":"The Epic Of Gilgamesh","reviews":{}},"5":{"author":"Unknown","title":"The Book Of Job","reviews":{}},"6":{"author":"Unknown","title":"One Thousand and One Nights","reviews":{}},"7":{"author":"Unknown","title":"Njál's Saga","reviews":{}},"8":{"author":"Jane Austen","title":"Pride and Prejudice","reviews":{}},"9":{"author":"Honoré de Balzac","title":"Le Père Goriot","reviews":{}},"10":{"author":"Samuel Beckett","title":"Molloy, Malone Dies, The Unnamable, the trilogy","reviews":{}}}
-
---------------------
-TASK 3: getbooksbyISBN
-curl.exe -sS --fail-with-body http://127.0.0.1:5000/isbn/1
-
-{"author":"Chinua Achebe","title":"Things Fall Apart","reviews":{}}
-
---------------------
-TASK 4: getbooksbyauthor
-curl.exe -sS --fail-with-body http://127.0.0.1:5000/author/Chinua%20Achebe
-
-{"1":{"author":"Chinua Achebe","title":"Things Fall Apart","reviews":{}}}
-
---------------------
-TASK 5: getbooksbytitle
-curl.exe -sS --fail-with-body http://127.0.0.1:5000/title/Things%20Fall%20Apart
-
-{"1":{"author":"Chinua Achebe","title":"Things Fall Apart","reviews":{}}}
-
---------------------
-TASK 6: getbookreview
-curl.exe -sS --fail-with-body http://127.0.0.1:5000/review/1
-
-{}
-
---------------------
-TASK 7: register
-curl.exe -sS --fail-with-body -H 'Content-Type: application/json' -X POST --data-binary @credentials.json http://127.0.0.1:5000/register
-
-{"message":"User registered successfully."}
-
---------------------
-TASK 8: login
-curl.exe -sS --fail-with-body -H 'Content-Type: application/json' -X POST -c demo-cookies.txt --data-binary @credentials.json http://127.0.0.1:5000/customer/login
-
-{"message":"Login successful."}
-
---------------------
-TASK 9: reviewadded
-curl.exe -sS --fail-with-body -H 'Content-Type: application/json' -X PUT -b demo-cookies.txt --data-binary @review.json http://127.0.0.1:5000/customer/auth/review/1
-
-{"message":"Review added successfully.","reviews":{"bookreader":"I liked how the story shows the pressure on Okonkwo and his community. The ending was sad, but it made the book stay with me."}}
-
---------------------
-TASK 10: deletereview
-curl.exe -sS --fail-with-body -X DELETE -b demo-cookies.txt http://127.0.0.1:5000/customer/auth/review/1
-
-{"message":"Review deleted successfully.","reviews":{}}
-
---------------------
-TASK 11: general-js-url
-https://github.com/oluwathimilehin07/expressBookReviews/blob/main/final_project/router/general.js
 
