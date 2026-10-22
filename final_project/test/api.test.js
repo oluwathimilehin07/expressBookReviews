@@ -40,8 +40,15 @@ test('catalogue, authentication, ownership and concurrent requests', async t => 
   const updated = await request('/customer/auth/review/1', 'PUT', { review: 'Updated thoughts.' }, first.cookie);
   assert.equal(updated.data.reviews.reader_one, 'Updated thoughts.');
   assert.equal(updated.data.reviews.reader_two, 'My second reading.');
-  await request('/customer/auth/review/1', 'DELETE', null, first.cookie);
+  const deleted = await request('/customer/auth/review/1', 'DELETE', null, first.cookie);
+  assert.equal(deleted.data.message, 'Review for ISBN 1 deleted');
   assert.deepEqual((await request('/review/1')).data, { reader_two: 'My second reading.' });
+  const { getAllBooks, getBookByISBN, getBooksByAuthor, getBooksByTitle } = require('../router/general');
+  const lookups = await Promise.all([getAllBooks(base), getBookByISBN(base, '1'), getBooksByAuthor(base, 'Unknown'), getBooksByTitle(base, 'Things Fall Apart')]);
+  assert.equal(Object.keys(lookups[0]).length, 10);
+  assert.equal(lookups[1].title, 'Things Fall Apart');
+  assert.equal(Object.keys(lookups[2]).length, 4);
+  assert.equal(lookups[3]['1'].author, 'Chinua Achebe');
   const concurrent = await Promise.all(Array.from({ length: 20 }, () => request('/')));
   assert.ok(concurrent.every(result => result.status === 200));
   await request('/customer/auth/review/1', 'DELETE', null, second.cookie);

@@ -1,3 +1,3 @@
-curl.exe -sS --fail-with-body -H 'Content-Type: application/json' -X POST --data-binary @credentials.json http://127.0.0.1:5000/register
+curl -sS --fail-with-body -H 'Content-Type: application/json' -X POST --data-binary @credentials.json http://127.0.0.1:5000/register
 
 {"message":"User registered successfully."}

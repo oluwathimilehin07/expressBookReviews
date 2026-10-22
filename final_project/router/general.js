@@ -10,18 +10,18 @@ async function getAllBooks(baseURL) {
   return response.data;
 }
 async function getBookByISBN(baseURL, isbn) {
-  const catalogue = await getAllBooks(baseURL);
+  const response = await axios.get(`${baseURL}/catalog`, { proxy: false, timeout: 5000 });
+  const catalogue = response.data;
   return Object.hasOwn(catalogue, isbn) ? catalogue[isbn] : null;
 }
-function getBooksByAuthor(baseURL, author) {
-  return getAllBooks(baseURL).then(catalogue => Object.fromEntries(
-    Object.entries(catalogue).filter(([, book]) =>
-      book.author.toLowerCase() === author.toLowerCase())
-  ));
+async function getBooksByAuthor(baseURL, author) {
+  const response = await axios.get(`${baseURL}/catalog`, { proxy: false, timeout: 5000 });
+  return Object.fromEntries(Object.entries(response.data).filter(([, book]) =>
+    book.author.toLowerCase() === author.toLowerCase()));
 }
 async function getBooksByTitle(baseURL, title) {
-  const catalogue = await getAllBooks(baseURL);
-  return Object.fromEntries(Object.entries(catalogue).filter(([, book]) =>
+  const response = await axios.get(`${baseURL}/catalog`, { proxy: false, timeout: 5000 });
+  return Object.fromEntries(Object.entries(response.data).filter(([, book]) =>
     book.title.toLowerCase() === title.toLowerCase()));
 }
 function lookup(method, parameter) {

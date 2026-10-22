@@ -21,3 +21,9 @@ Task 10 URL: https://github.com/oluwathimilehin07/expressBookReviews/blob/main/f
 TASKS-1-11.txt contains all eleven deliverables in this order. TASKS-1-9.txt contains the API cURL evidence. The API evidence was captured previously and uses Windows curl.exe syntax; use curl on macOS/Linux and adjust shell quoting when rerunning it. Registration, login, and review changes must run in order. Initial reviews are empty in IBM's starter.
 
 The GitHub API confirms this is a fork of ibm-developer-skills-network/expressBookReviews. The assignment's singular expressBookReview is a naming typo.
+
+## Feedback corrections
+
+The grading form places githubrepo first (Question 1), the API evidence at Questions 2–10, and general.js at Question 11. TASKS-1-11.txt now follows that form order. The original assignment overview numbered the same deliverables differently.
+
+The fork command now uses jq to print the parent name. The delete response identifies the ISBN. Each lookup method directly awaits an Axios request. The exact review sample and expanded Question 11 criteria are still needed from the grader before those requirements can be confirmed.

@@ -2,6 +2,7 @@ const { spawn } = require('node:child_process');
 const fs = require('node:fs/promises');
 const path = require('node:path');
 const app = require('../index');
+const curl = process.platform === 'win32' ? 'curl.exe' : 'curl';
 const directory = path.resolve(__dirname, '../../submission');
 async function main() {
   await fs.mkdir(directory, { recursive: true });
@@ -9,9 +10,9 @@ async function main() {
   await new Promise((resolve, reject) => { server.once('listening', resolve); server.once('error', reject); });
   const cookie = path.join(directory, 'demo-cookies.txt');
   async function capture(name, args) {
-    const command = 'curl.exe ' + args.map(arg => /[\s"{}]/.test(arg) ? `'${arg}'` : arg).join(' ');
+    const command = curl + ' ' + args.map(arg => /[\s"{}]/.test(arg) ? `'${arg}'` : arg).join(' ');
     const output = await new Promise((resolve, reject) => {
-      const child = spawn('curl.exe', args, { cwd: directory });
+      const child = spawn(curl, args, { cwd: directory });
       let stdout = '', stderr = '';
       child.stdout.on('data', chunk => stdout += chunk);
       child.stderr.on('data', chunk => stderr += chunk);
